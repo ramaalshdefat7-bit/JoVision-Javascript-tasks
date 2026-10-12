@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 10 - Get IP</title>
+</head>
+<body>
+
+    <button id="ipButton" onclick="getIp()">Get ip</button>
+
+    <script>
+        function getIp() {
+            let button = document.getElementById("ipButton");
+            button.textContent = "Loading...";
+
+            fetch("https://api.ipify.org/")
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error("Request failed");
+                    }
+                    return response.text();
+                })
+                .then(function (ip) {
+                    button.textContent = ip;
+                })
+                .catch(function (error) {
+                    button.textContent = "Get ip";
+                    console.error("Error:", error);
+                });
+        }
+    </script>
+
+</body>
+</html>
