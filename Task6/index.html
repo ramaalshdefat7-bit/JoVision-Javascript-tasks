@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+</head>
+<body><h1>JavaScript Array Operations</h1>
+
+<button onclick="removeMultiplesOfThree()">Remove Multiples of 3</button>
+
+<button onclick="addOneHundred()">Add 100 to Numbers</button>
+
+<button onclick="addThree()">Add 3 to Each Element</button>
+
+<button onclick="printRange()">Print Index 20 to 40</button>
+
+<button onclick="shuffleAndSort()">Shuffle and Sort</button>
+
+<script>
+    function removeMultiplesOfThree() {
+        let numbers = [];
+
+        for (let i = 0; i <= 100; i++) {
+            numbers.push(i);
+        }
+
+        let result = numbers.filter(function (number) {
+            return number % 3 !== 0;
+        });
+
+        console.log("Numbers after removing multiples of 3:", result);
+    }
+
+    function addOneHundred() {
+        let numbers = [];
+
+        for (let i = 0; i <= 150; i++) {
+            numbers.push(i);
+        }
+
+        let result = numbers.map(function (number) {
+            return number + 100;
+        });
+
+        console.log("Numbers after adding 100:", result);
+    }
+
+    function addThree() {
+        let numbers = [];
+
+        for (let i = 0; i <= 100; i++) {
+            numbers.push(i);
+        }
+
+        let result = numbers.map(function (number) {
+            return number + 3;
+        });
+
+        console.log("Numbers after adding 3:", result);
+    }
+
+    function printRange() {
+        let numbers = [];
+
+        for (let i = 0; i <= 100; i++) {
+            numbers.push(i);
+        }
+
+        let result = numbers.slice(20, 41);
+
+        console.log("Elements from index 20 to 40:", result);
+    }
+
+    function shuffleAndSort() {
+        let numbers = [];
+
+        for (let i = 0; i <= 100; i++) {
+            numbers.push(i);
+        }
+
+        numbers.sort(function () {
+            return Math.random() - 0.5;
+        });
+
+        console.log("Shuffled numbers:", numbers);
+
+        numbers.sort(function (a, b) {
+            return b - a;
+        });
+
+        console.log("Numbers in descending order:", numbers);
+    }
+</script>
+
+</body>
+</html>
