@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 13 - Guess Age</title>
+</head>
+<body>
+
+    <h1>Guess Age</h1>
+
+    <form id="nameForm">
+        <label for="name">Name:</label>
+        <input
+            type="text"
+            id="name"
+            placeholder="Name"
+            required
+        >
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            var name = document.getElementById("name").value.trim();
+
+            if (name === "") {
+                alert("Please enter a name.");
+                return;
+            }
+
+            fetch("https://api.agify.io/?name=" + encodeURIComponent(name))
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error("Request failed.");
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    var { name, age } = data;
+
+                    if (age === null) {
+                        alert("Your name is: " + name +
+                              "\nAge could not be estimated.");
+                        return;
+                    }
+
+                    alert("Your name is: " + name +
+                          "\nYour age is: " + age);
+                })
+                .catch(function(error) {
+                    alert("An error occurred: " + error.message);
+                });
+        }
+
+        document.getElementById("nameForm")
+            .addEventListener("submit", handleSubmit);
+    </script>
+
+</body>
+</html>
